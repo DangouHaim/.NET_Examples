@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="3d31dac3-8b38-4216-b453-f56aea32c516" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:4473/LayoutService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="LayoutService.xsd" MetadataType="Schema" ID="10bb7080-dd27-496c-9dd8-2ba0b02291d2" SourceId="1" SourceUrl="http://localhost:4473/LayoutService.svc?xsd=xsd1" />
+    <MetadataFile FileName="LayoutService1.xsd" MetadataType="Schema" ID="6b29792b-f9d8-4f3d-b7d0-cb82b5ec3f1a" SourceId="1" SourceUrl="http://localhost:4473/LayoutService.svc?xsd=xsd0" />
+    <MetadataFile FileName="LayoutService.wsdl" MetadataType="Wsdl" ID="da9394c2-95b8-4181-b50b-d6c1e4538aa3" SourceId="1" SourceUrl="http://localhost:4473/LayoutService.svc?wsdl" />
+    <MetadataFile FileName="LayoutService2.xsd" MetadataType="Schema" ID="ecd22298-1554-49a4-b379-8b807c2add4e" SourceId="1" SourceUrl="http://localhost:4473/LayoutService.svc?xsd=xsd2" />
+    <MetadataFile FileName="LayoutService.disco" MetadataType="Disco" ID="080ec2e8-7abe-46a3-af5c-ede30e306a1a" SourceId="1" SourceUrl="http://localhost:4473/LayoutService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,13 @@
+﻿@using DataPresenter.Entity;
+@using TicketManagement.ASP.Views.Event;
+@model EventArea
+
+
+<h2>@Lang.EditEventArea</h2>
+
+@using (Html.BeginForm("EditEventArea", "Event", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Id)
+    @Html.EditorFor(m => m.Price)
+    <input type="submit" value=@Lang.Update />
+}

@@ -1,0 +1,33 @@
+﻿@using DAL.Enums
+@model IEnumerable<DAL.ResponseModel.SearchModelResponse>
+
+@foreach (var item in Model)
+{
+    if (item.Type == Messangers.YouTube.ToString())
+    {
+        @Html.Partial("_Youtube", item);
+    }
+    if (item.Type == Messangers.Vk.ToString())
+    {
+        if (item.VkModel.IsVideo)
+        {
+            @Html.Partial("_VkVideo", item);
+        }
+        else
+        {
+            @Html.Partial("_VkPost", item);
+        }
+    }
+    if (item.Type == Messangers.Telegram.ToString())
+    {
+        @Html.Partial("_TelegramPost", item);
+    }
+}
+
+<script>
+    handleAddButton();
+    $(".post__link-share").click(function () {
+        shareClick("Panda.wiki", $(".post__link-share").index(this) + 1);
+    });
+    handleGifPlayer();
+</script>

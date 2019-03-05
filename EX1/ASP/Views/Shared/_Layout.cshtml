@@ -1,0 +1,66 @@
+﻿@using PandaWiki.Views.Shared;
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="MobileOptimized" content="320">
+    <meta name="HandheldFriendly" content="true">
+
+    <meta name="description" content="">
+
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.3.0/lodash.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+</head>
+<body>
+
+    @RenderBody()
+
+    <footer class="index-footer">
+        <ul class="index-footer__menu">
+            <li class="index-footer__item">
+                <a class="index-footer__link" href="#">@Lang.Help</a>
+            </li>
+            <li class="index-footer__item">
+                <a class="index-footer__link" href="#">@Lang.Rules</a>
+            </li>
+            <li class="index-footer__item">
+                <a class="index-footer__link" href="#">@Lang.Blog</a>
+            </li>
+            <li class="index-footer__item index-footer__item--dropdown">
+               <!-- <button class="index-footer__link index-footer__link--lang" type="button" id="index-page__language-button">Язык</button>-->
+                @using (Html.BeginForm("SetLocale", "Home", FormMethod.Post))
+                {
+                    <!--<ul class="index-footer__language-list language-list" id="index-page__language-list" tabindex="-1">
+                        <li class="language-list__item">
+                            <a name="locale" value="en-us" class="language-list__link" href="#">En&nbsp;—&nbsp;Английский</a>
+                        </li>
+                        <li class="language-list__item">
+                            <a class="language-list__link">Ru&nbsp;—&nbsp;Русский</a>
+                        </li>
+                    </ul>-->
+
+                <select name="locale" onchange="submit();" class="index-footer__link index-footer__link--lang">
+                    <option value="" class="language-list__link">@Lang.Language</option>
+                    <option value="ru-ru" class="language-list__link">RU - Русский</option>
+                    <option value="en-us" class="language-list__link">EN - English</option>
+                    <option value="de-de" class="language-list__link">DE - Deutsch</option>
+                    <option value="es-es" class="language-list__link">ES - Spanish</option>
+                </select>
+                }
+            </li>
+        </ul>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/main")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

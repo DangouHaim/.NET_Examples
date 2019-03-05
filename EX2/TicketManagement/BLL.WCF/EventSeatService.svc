@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="BLL.WCF.EventSeatService" CodeBehind="EventSeatService.svc.cs" %>

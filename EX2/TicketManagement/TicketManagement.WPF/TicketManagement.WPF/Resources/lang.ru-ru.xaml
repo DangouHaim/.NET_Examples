@@ -1,0 +1,35 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:TicketManagement.WPF.Resources"
+                    xmlns:v="clr-namespace:System;assembly=mscorlib"
+                    >
+    <v:String x:Key="Language">Язык</v:String>
+    <v:String x:Key="Login">Войти</v:String>
+    <v:String x:Key="Password">Пароль</v:String>
+    <v:String x:Key="Description">Описание</v:String>
+    <v:String x:Key="CoordX">Координата X</v:String>
+    <v:String x:Key="CoordY">Координата Y</v:String>
+    <v:String x:Key="Cancel">Отмена</v:String>
+    <v:String x:Key="Commit">Ок</v:String>
+    <v:String x:Key="Row">Ряд</v:String>
+    <v:String x:Key="Number">Номер</v:String>
+    <v:String x:Key="Address">Адрес</v:String>
+    <v:String x:Key="Phone">Телефон</v:String>
+    <v:String x:Key="UserManagement">Управление пользователями</v:String>
+    <v:String x:Key="LoginAsNickName">Логин</v:String>
+    <v:String x:Key="Roles">Роли</v:String>
+    <v:String x:Key="DropRole">Удалить роль</v:String>
+    <v:String x:Key="DropUser">Удалить пользователя</v:String>
+    <v:String x:Key="AddUser">Добавить пользователя</v:String>
+    <v:String x:Key="VenueManagement">Управление местами проведения</v:String>
+    <v:String x:Key="Venue">Место проведения</v:String>
+    <v:String x:Key="Layout">Карта</v:String>
+    <v:String x:Key="Area">Область</v:String>
+    <v:String x:Key="Seat">Место</v:String>
+    <v:String x:Key="Remove">Удалить</v:String>
+    <v:String x:Key="LoginError">Не верное имя пользователя или пароль</v:String>
+    <v:String x:Key="InsertError">Ошибка добавления</v:String>
+    <v:String x:Key="ChangeUserError">Невозможно изменить пользователя</v:String>
+    <v:String x:Key="RoleError">Невозможно изменить роль</v:String>
+    <v:String x:Key="AccessDenied">Отказано в доступе</v:String>
+</ResourceDictionary>

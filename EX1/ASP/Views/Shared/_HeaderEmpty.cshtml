@@ -1,0 +1,49 @@
+﻿@using PandaWiki.Views.Shared;
+
+@{ 
+    var authorised = Request.Cookies["access_token"] != null
+     && !string.IsNullOrEmpty(Request.Cookies["access_token"].Value);
+}
+
+<header class="page-header">
+    <div class="container">
+        <div class="page-header__wrapper">
+            <a class="page-header__logo" href="@Url.Action("Index", "Home")">
+                <svg class="page-header__logo-svg">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="~/Content/images/icon_sprite.svg#icon_logo"></use>
+                </svg>
+            </a>
+
+            <div class="page-header__user-wrapper">
+                @if (ViewBag.IsLogin != null)
+                {
+                    if (ViewBag.IsLogin)
+                    {
+                        @Html.ActionLink(Lang.Register, "Register", "Account", new { }, new { @class = "index-page__login-link" })
+                    }
+                    else
+                    {
+                        @Html.ActionLink(Lang.Login, "Login", "Account", new { }, new { @class = "index-page__login-link" })
+                    }
+                }
+                else
+                {
+                    if (authorised)
+                    {
+                        <a href="@Url.Action("Index", "UserPage", new { userName = User.Identity.Name })" class="page-header__profile-link">
+                            <span class="visually-hidden">Профиль</span>
+                            <svg class="page-header__profile-svg">
+                                <use xlink:href="~/Content/images/icon_sprite.svg#icon_profile" />
+                            </svg>
+                        </a>
+                    }
+                    else
+                    {
+                        @Html.ActionLink(Lang.Login, "Login", "Account", new { }, new { @class = "index-page__login-link" })
+                    }
+                }
+            </div>
+
+        </div>
+    </div>
+</header>

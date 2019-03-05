@@ -1,0 +1,55 @@
+﻿@using DataPresenter.Entity;
+@using TicketManagement.ASP.Views.Event;
+
+@model Event
+
+
+<h2>@Lang.EditEvent</h2>
+
+
+@using (Html.BeginForm("DeleteImages", "Event", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Id);
+    <div class="galary">
+        @foreach (var v in ViewBag.Galery as List<Tuple<int, string>>)
+        {
+            <div class="galary-item">
+                <input type="checkbox" name="Ids" value="@v.Item1" />
+                <img src="@v.Item2" />
+            </div>
+        }
+    </div>
+    if ((ViewBag.Galery as List<Tuple<int, string>>).Count > 0)
+    {
+        <input type="submit" value=@Lang.Delete />
+    }
+}
+
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<section>
+    @using (Html.BeginForm("EditEventConfirmed", "Event", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <label>@Lang.SelectLayout</label>
+        @Html.HiddenFor(m => m.Id)
+        @Html.DropDownList("LayoutId", new SelectList(ViewBag.Layouts, "Id", "Description"))
+        <br />
+        @Html.LabelFor(m => m.Name)
+        <br>
+        @Html.EditorFor(m => m.Name)
+        <br>
+        @Html.LabelFor(m => m.Description)
+        <br>
+        @Html.EditorFor(m => m.Description)
+        <br>
+        @Html.LabelFor(m => m.EventDate)
+        <br>
+        @Html.TextBoxFor(m => m.EventDate, new { type = "datetime-local" })
+        <br>
+        <label for="file">@Lang.UploadImage:</label>
+        <input type="file" name="file" id="file" /><br><br>
+        <br>
+        <input type="submit" value=@Lang.Save />
+    }
+</section>

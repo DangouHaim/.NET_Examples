@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="86c0a5d0-deaa-48e9-95d1-ea4ef9424e1d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:4473/EventSeatService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="EventSeatService.xsd" MetadataType="Schema" ID="a80fc445-9628-40c3-8aa4-ce1841e902db" SourceId="1" SourceUrl="http://localhost:4473/EventSeatService.svc?xsd=xsd2" />
+    <MetadataFile FileName="EventSeatService.disco" MetadataType="Disco" ID="16a39661-0f48-4d60-a326-02c552e608c7" SourceId="1" SourceUrl="http://localhost:4473/EventSeatService.svc?disco" />
+    <MetadataFile FileName="EventSeatService.wsdl" MetadataType="Wsdl" ID="1c2da082-057f-40e3-9842-9df11f50b526" SourceId="1" SourceUrl="http://localhost:4473/EventSeatService.svc?wsdl" />
+    <MetadataFile FileName="EventSeatService1.xsd" MetadataType="Schema" ID="1ed5f280-3be5-47bc-a84e-0580c437c07b" SourceId="1" SourceUrl="http://localhost:4473/EventSeatService.svc?xsd=xsd1" />
+    <MetadataFile FileName="EventSeatService2.xsd" MetadataType="Schema" ID="29b87ced-9489-46cc-885f-0ac71095dbf3" SourceId="1" SourceUrl="http://localhost:4473/EventSeatService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

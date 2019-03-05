@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="76fd5a86-fc89-4e84-b8f9-a961e0017677" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:4473/SeatService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SeatService.xsd" MetadataType="Schema" ID="2e77a84b-aeb2-4302-91a3-2c67a477ba7f" SourceId="1" SourceUrl="http://localhost:4473/SeatService.svc?xsd=xsd0" />
+    <MetadataFile FileName="SeatService.disco" MetadataType="Disco" ID="ecae4020-bd4e-4618-a3cd-61432012215a" SourceId="1" SourceUrl="http://localhost:4473/SeatService.svc?disco" />
+    <MetadataFile FileName="SeatService1.xsd" MetadataType="Schema" ID="b813bba9-8364-4dfa-aa1f-71d18b228986" SourceId="1" SourceUrl="http://localhost:4473/SeatService.svc?xsd=xsd1" />
+    <MetadataFile FileName="SeatService2.xsd" MetadataType="Schema" ID="5868bef3-9b82-4d3b-b931-7962484a4a5b" SourceId="1" SourceUrl="http://localhost:4473/SeatService.svc?xsd=xsd2" />
+    <MetadataFile FileName="SeatService.wsdl" MetadataType="Wsdl" ID="f00d4450-8078-45af-afa3-bf2c97d08f2f" SourceId="1" SourceUrl="http://localhost:4473/SeatService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

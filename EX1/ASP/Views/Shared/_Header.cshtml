@@ -1,0 +1,66 @@
+﻿@using PandaWiki.Views.Shared;
+
+@{ 
+    var authorised = Request.Cookies["access_token"] != null
+     && !string.IsNullOrEmpty(Request.Cookies["access_token"].Value);
+}
+
+@model DAL.RequestModel.QuerySearchModel
+<header class="page-header slideDown fixed">
+    <div class="container">
+        <div class="page-header__wrapper">
+            <a class="page-header__logo" href="@Url.Action("Index", "Home")">
+                <svg class="page-header__logo-svg">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="~/Content/images/icon_sprite.svg#icon_logo"></use>
+                </svg>
+            </a>
+            <form id="SearchForm" action="/Home/RedirectToResultPage" method="POST">
+                <input type="hidden" name="result" class="result-data" />
+                <div class="dropdown page-header__search">
+                    <input name="q" class="dropdown-toggle" type="text" id="dropdownMenu-search"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" value="@Model.Q">
+
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu-search">
+                        <li class="dropdown-header">Заголовок блока 1</li>
+                        <li><a href="#">Результат 1</a></li>
+                        <li><a href="#">Результат 2</a></li>
+                        <li><a href="#">Результат 3</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Заголовок блока 2</li>
+                        <li><a href="#">Автор 1</a></li>
+                    </ul>
+                    <button class="page-header__search-submit" type="submit" id="SubmitButton">
+                        <span class="visually-hidden">Искать</span>
+                        <svg class="page-header__search-svg">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="~/Content/images/icon_sprite.svg#icon_search" />
+                        </svg>
+                    </button>
+                </div>
+            </form>
+
+            <div class="page-header__user-wrapper">
+                @if (authorised)
+                {
+                    <a href="@Url.Action("Index", "UserPage", new { userName = User.Identity.Name })" class="page-header__profile-link">
+                        <span class="visually-hidden">Профиль</span>
+                        <svg class="page-header__profile-svg">
+                            <use xlink:href="~/Content/images/icon_sprite.svg#icon_profile" />
+                        </svg>
+                    </a>
+                }
+                else
+                {
+                    @Html.ActionLink(Lang.Login, "Login", "Account", new { }, new { @class = "index-page__login-link" })
+                }
+            </div>
+            <!--<div class="page-header__user-wrapper">
+        <a class="page-header__profile-link" href="#">
+            <span class="visually-hidden">Профиль</span>
+            <svg class="page-header__profile-svg">
+                <use xlink:href="~/Content/images/icon_sprite.svg#icon_profile" />
+            </svg>
+        </a>
+    </div>-->
+        </div>
+    </div>
+</header>

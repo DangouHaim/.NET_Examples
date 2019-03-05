@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="563fa5b8-1eee-467c-b5a3-4fef2d106b09" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:4473/VenueService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="VenueService.xsd" MetadataType="Schema" ID="a9ccaed8-89c9-4da0-aaf5-96de4f9d62d4" SourceId="1" SourceUrl="http://localhost:4473/VenueService.svc?xsd=xsd2" />
+    <MetadataFile FileName="VenueService.wsdl" MetadataType="Wsdl" ID="fe806ba0-dfea-4882-a23d-53a41e4abbf4" SourceId="1" SourceUrl="http://localhost:4473/VenueService.svc?wsdl" />
+    <MetadataFile FileName="VenueService1.xsd" MetadataType="Schema" ID="0f53b52a-96d4-47e9-9372-88dc9dad5c77" SourceId="1" SourceUrl="http://localhost:4473/VenueService.svc?xsd=xsd0" />
+    <MetadataFile FileName="VenueService2.xsd" MetadataType="Schema" ID="02d300c0-734a-49b0-961f-23f1ded6577f" SourceId="1" SourceUrl="http://localhost:4473/VenueService.svc?xsd=xsd1" />
+    <MetadataFile FileName="VenueService.disco" MetadataType="Disco" ID="a453fea5-5ede-488f-bc53-fe870ad8248c" SourceId="1" SourceUrl="http://localhost:4473/VenueService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

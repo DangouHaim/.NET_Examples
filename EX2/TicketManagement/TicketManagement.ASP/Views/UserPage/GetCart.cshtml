@@ -1,0 +1,47 @@
+﻿@using DataPresenter.Entity;
+@using TicketManagement.ASP.Views.UserPage;
+@model IEnumerable<GetUserCart_Result3>
+
+
+<h2>@Lang.Cart</h2>
+
+
+@using (Html.BeginForm("BuyTicketsFromCart", "Event", FormMethod.Post))
+{
+    foreach (var v in Model)
+    {
+        <div class="cart-item">
+            <p>
+                <input type="checkbox" name="Ids" value=@v.EventSeatId />
+            </p>
+            <p>
+                @v.VenueDescription
+            </p>
+            <p>
+                @v.LayoutDescription
+            </p>
+            <p>
+                @v.AreaDescription
+            </p>
+            <p>
+                @v.Address
+            </p>
+            <p>
+                @v.Phone
+            </p>
+            <p>
+                @v.Price
+            </p>
+            <p>
+                @v.Row
+            </p>
+            <p>
+                @v.Number
+            </p>
+        </div>
+    }
+    if (Model.Count() > 0)
+    {
+        <input type="submit" />
+    }
+}

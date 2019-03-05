@@ -1,0 +1,36 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:TicketManagement.WPF.Resources"
+                    xmlns:v="clr-namespace:System;assembly=mscorlib"
+                    >
+    <v:String x:Key="Language">Language</v:String>
+    <v:String x:Key="Login">Login</v:String>
+    <v:String x:Key="Password">Password</v:String>
+    <v:String x:Key="Description">Description</v:String>
+    <v:String x:Key="CoordX">Coord X</v:String>
+    <v:String x:Key="CoordY">Coord Y</v:String>
+    <v:String x:Key="Cancel">Cancel</v:String>
+    <v:String x:Key="Commit">Commit</v:String>
+    <v:String x:Key="Row">Row</v:String>
+    <v:String x:Key="Number">Number</v:String>
+    <v:String x:Key="Address">Address</v:String>
+    <v:String x:Key="Phone">Phone</v:String>
+    <v:String x:Key="UserManagement">User management</v:String>
+    <v:String x:Key="LoginAsNickName">Login</v:String>
+    <v:String x:Key="Roles">Roles</v:String>
+    <v:String x:Key="DropRole">Drop role</v:String>
+    <v:String x:Key="DropUser">Drop user</v:String>
+    <v:String x:Key="AddUser">Add user</v:String>
+    <v:String x:Key="VenueManagement">Venue management</v:String>
+    <v:String x:Key="Venue">Venue</v:String>
+    <v:String x:Key="Layout">Layout</v:String>
+    <v:String x:Key="Area">Area</v:String>
+    <v:String x:Key="Seat">Seat</v:String>
+    <v:String x:Key="Remove">Remove</v:String>
+    <v:String x:Key="LoginError">Wrong user name or password</v:String>
+    <v:String x:Key="InsertError">Insert error</v:String>
+    <v:String x:Key="ChangeUserError">Unable to edit user</v:String>
+    <v:String x:Key="RoleError">Unable to edit role</v:String>
+    <v:String x:Key="AccessDenied">Access denied</v:String>
+    
+</ResourceDictionary>

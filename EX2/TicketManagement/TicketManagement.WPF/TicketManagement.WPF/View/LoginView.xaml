@@ -1,0 +1,45 @@
+﻿<Window x:Class="TicketManagement.WPF.View.LoginView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TicketManagement.WPF.View"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:xc="clr-namespace:TicketManagement.WPF.Util"
+        mc:Ignorable="d"
+        Title="LoginView" 
+        Height="360" 
+        MinHeight="360" 
+        MaxHeight="400"
+        Width="300" 
+        MinWidth="200"
+        MaxWidth="800"
+        xc:DialogCloser.DialogResult="{Binding DialogResult}"
+        >
+    <Grid Margin="0 0 0 20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Style="{StaticResource StackPanelDefault}">
+            <Label>EMail</Label>
+            <TextBox DataContext="{Binding Login}" Text="{Binding Login}"></TextBox>
+            <Label Content="{DynamicResource Password}"></Label>
+            <PasswordBox Name="PasswordBox" DataContext="{Binding Login}"></PasswordBox>
+            <Label Content="{DynamicResource Language}"></Label>
+            <ComboBox Name="LangList">
+                <ComboBoxItem Content="English"></ComboBoxItem>
+                <ComboBoxItem Content="Русский"></ComboBoxItem>
+                <ComboBoxItem Content="Беларускі"></ComboBoxItem>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding ChangeLanguageCommand}" 
+                                               CommandParameter="{Binding ElementName=LangList, Path=SelectedItem}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ComboBox>
+            <TextBlock Text="{Binding CurrentError}" Style="{StaticResource ErrorLabel}"></TextBlock>
+        </StackPanel>
+        <Button Margin="20 5" Grid.Row="1" Style="{StaticResource DialogButton}" IsDefault="True" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=PasswordBox}" Content="{DynamicResource Login}"></Button>
+    </Grid>
+</Window>

@@ -1,0 +1,9 @@
+﻿@using TicketManagement.ASP.Views.UserPage;
+
+<h2>@Lang.AddAmount</h2>
+
+@using (Html.BeginForm("AddAmount", "UserPage", FormMethod.Post))
+{
+    <input type="number" name="amount" />
+    <input type="submit" value=@Lang.Add />
+}

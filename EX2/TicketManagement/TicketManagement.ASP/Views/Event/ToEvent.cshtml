@@ -1,0 +1,79 @@
+﻿@using System.Globalization;
+@using System.Web.UI;
+@using DataPresenter.Entity;
+@using TicketManagement.ASP.Views.Event;
+
+@model Event
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<h2>@Lang.Event @Model.Name</h2>
+
+<div class="galary">
+    @foreach (var v in ViewBag.Galery as List<string>)
+    {
+        <div class="galary-item">
+            <img src="@v" />
+        </div>
+    }
+</div>
+
+<h3>@Lang.TicketCount: @ViewBag.TicketCount</h3>
+
+<label>@Lang.Name</label>
+<br />
+@Html.DisplayFor(m => m.Name)
+<br />
+<label>@Lang.Description</label>
+<br />
+@Html.DisplayFor(m => m.Description)
+<br />
+<label>@Lang.EventDate</label>
+<br />
+@Model.EventDate.ToString("dd-mm-yyyy hh:mm") @Model.EventDate.ToString("tt", CultureInfo.InvariantCulture)
+
+@using (Html.BeginForm("BuyTickets", "Event", FormMethod.Post))
+{
+    foreach (var v in ViewBag.SeatsData as List<Tuple<EventArea, IEnumerable<EventSeat>>>)
+    {
+        <h3 class="text-center">@Lang.Area: @v.Item1.Description @Lang.Price: @v.Item1.Price</h3>
+
+            <div class="seats-grid">
+                @foreach (var s in (EventSeat[]) v.Item2)
+                {
+                    if (s.State == 0)
+                    {
+                        <div class="seats-grid-item">
+                            <span>
+                                <input type="checkbox" name="Ids" value=@s.Id />
+                            </span>
+                            <b>@Html.Label(s.Row + " : " + s.Number)</b>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="seats-grid-item">
+                            <span>
+                                <input type="checkbox" checked disabled />
+                            </span>
+                            <b>@Html.Label(s.Row + " : " + s.Number)</b>
+                        </div>
+                    }
+                }
+            </div>
+    }
+    <input type="hidden" name="eventId" value=@Model.Id>
+
+    if (ViewBag.IsUser)
+    {
+        <span>
+            @Html.RadioButton("From", "1")
+            <label>@Lang.Buy</label>
+        </span>
+        <span>
+            @Html.RadioButton("From", "0", true)
+            <label>@Lang.ToCart</label>
+        </span>
+        <input type="submit">
+    }
+}

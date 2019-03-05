@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  ticketmanagement.web-api.core:
+    image: ${DOCKER_REGISTRY}ticketmanagementwebapicore
+    build:
+      context: .
+      dockerfile: TicketManagement.Web-API.CORE/Dockerfile

@@ -1,0 +1,3 @@
+﻿ALTER TABLE dbo.Cart
+ADD CONSTRAINT FK_EventSeat_Cart FOREIGN KEY (EventSeatId)
+    REFERENCES dbo.EventSeat (Id) ON DELETE CASCADE

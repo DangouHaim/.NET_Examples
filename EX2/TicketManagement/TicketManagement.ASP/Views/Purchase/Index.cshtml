@@ -1,0 +1,49 @@
+﻿@using DataPresenter.Entity;
+@using TicketManagement.ASP.Views.Purchase;
+@using LangUs = TicketManagement.ASP.Views.UserPage.Lang;
+
+@model IEnumerable<Purchase>
+
+<h2>@LangUs.PurchaseHistory</h2>
+
+<section id="Purchases">
+    @foreach (var v in Model)
+    {
+        <div>
+            @Html.Label(@Lang.PurchaseDate)
+            <br>
+            @Html.Label(v.Date.ToString())
+            <br>
+
+            @Html.Label(@Lang.EventName)
+            <br>
+            @Html.Label(v.EventName)
+            <br>
+
+            @Html.Label(@Lang.EventDescription)
+            <br>
+            @Html.Label(v.EventDescription)
+            <br>
+
+            @Html.Label(@Lang.EventDate)
+            <br>
+            @Html.Label(v.EventDate.ToShortDateString())
+            <br>
+
+            @Html.Label(@Lang.AreaDescription)
+            <br>
+            @Html.Label(v.AreaDescription)
+            <br>
+
+            @Html.Label(@Lang.SeatRow)
+            <br>
+            @Html.Label(v.SeatRow.ToString())
+            <br>
+
+            @Html.Label(@Lang.SeatNumber)
+            <br>
+            @Html.Label(v.SeatNumber.ToString())
+            <br>
+        </div>
+    }
+</section>

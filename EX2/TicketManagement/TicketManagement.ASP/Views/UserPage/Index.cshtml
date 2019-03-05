@@ -1,0 +1,46 @@
+﻿@using DataPresenter.Entity;
+@using TicketManagement.ASP.Views.UserPage;
+@using LangAc = TicketManagement.ASP.Views.Account.Lang;
+@model User
+
+
+<h2>@Lang.User: @Model.Name</h2>
+@if (ViewBag.IsUser)
+{
+    <h4>@Lang.Balance: @Model.Balance</h4>
+}
+
+<section>
+    <ul>
+        <li>
+            @Html.ActionLink(LangAc.ChangeName, "ChangeName", "Account")
+        </li>
+        <li>
+            @Html.ActionLink(LangAc.ChangeEmail, "ChangeEmail", "Account")
+        </li>
+        <li>
+            @Html.ActionLink(LangAc.ChangePassword, "ChangePassword", "Account")
+        </li>
+        <li>
+            @Html.ActionLink(Lang.ChanheLanguage, "SetLocale", "UserPage")
+        </li>
+        @if (ViewBag.IsUser)
+        {
+            <li>
+                @Html.ActionLink(Lang.AddAmount, "AddAmount", "UserPage")
+            </li>
+            <li>
+                @Html.ActionLink(Lang.PurchaseHistory, "Index", "Purchase")
+            </li>
+            <li>
+                @Html.ActionLink(Lang.Cart, "GetCart", "UserPage")
+            </li>
+        }
+        @if (ViewBag.IsManager)
+        {
+            <li>
+                @Html.ActionLink(Lang.ManageEvents, "ManageEvents", "Event")
+            </li>
+        }
+    </ul>
+</section>

@@ -1,0 +1,3 @@
+﻿ALTER TABLE dbo.EventFile
+ADD CONSTRAINT FK_File_EventFile FOREIGN KEY (FileId)
+    REFERENCES dbo.[File] (Id) ON DELETE CASCADE

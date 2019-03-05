@@ -1,0 +1,15 @@
+﻿@using DataPresenter.Entity;
+@using TicketManagement.ASP.Views.Event;
+
+@model IEnumerable<Event>
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<section id="events">
+    <h2>@Lang.Events</h2>
+    @foreach(var v in Model)
+    {
+        @Html.ActionLink(v.Name, "ToEvent", "Event", new { Id = v.Id }, null)
+        <br />
+    }
+</section>

@@ -1,0 +1,119 @@
+﻿@using PandaWiki.Views.Shared;
+
+<footer class="page-footer">
+    <div class="container" >
+        <!--     <div class="row page-footer__menu-list">
+        <div class="col-xs-6 col-md-2">
+            <h3 class="page-footer__list-title">Меню 1</h3>
+
+            <ul class="page-footer__list">
+                <li class="page-footer__item"><a href="#">Пункт 1</a></li>
+                <li class="page-footer__item"><a href="#">Пункт 2</a></li>
+                <li class="page-footer__item"><a href="#">Пункт 3</a></li>
+                <li class="page-footer__item"><a href="#">Пункт 4</a></li>
+                <li class="page-footer__item"><a href="#">Пункт 5</a></li>
+                <li class="page-footer__item"><a href="#">Пункт 6</a></li>
+            </ul>
+        </div>
+
+        <div class="col-xs-6 col-md-2">
+            <h3 class="page-footer__list-title">Меню 2</h3>
+
+            <ul class="page-footer__list">
+                <li class="page-footer__item"><a href="#">Пункт 1</a></li>
+                <li class="page-footer__item"><a href="#">Пункт 2</a></li>
+                <li class="page-footer__item"><a href="#">Пункт 3</a></li>
+            </ul>
+        </div>
+
+        <div class="col-xs-6 col-md-2">
+            <h3 class="page-footer__list-title">Меню 3</h3>
+
+            <ul class="page-footer__list">
+                <li class="page-footer__item"><a href="#">Пункт 1</a></li>
+                <li class="page-footer__item"><a href="#">Пункт 2</a></li>
+                <li class="page-footer__item"><a href="#">Пункт 3</a></li>
+                <li class="page-footer__item"><a href="#">Пункт 4</a></li>
+                <li class="page-footer__item"><a href="#">Пункт 5</a></li>
+            </ul>
+        </div>
+
+        <div class="col-xs-6 col-md-2">
+            <h3 class="page-footer__list-title">Меню 4</h3>
+
+            <ul class="page-footer__list">
+                <li class="page-footer__item"><a href="#">Пункт 1</a></li>
+                <li class="page-footer__item"><a href="#">Пункт 2</a></li>
+                <li class="page-footer__item"><a href="#">Пункт 3</a></li>
+                <li class="page-footer__item"><a href="#">Пункт 4</a></li>
+                <li class="page-footer__item"><a href="#">Пункт 5</a></li>
+            </ul>
+        </div>
+
+        <div class="col-xs-12 col-md-3 col-md-offset-1 page-footer__logo">
+
+        </div>
+    </div> -->
+
+       
+        <div class="index-footer" style="background-color:#eceef3">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="page-footer__wrapper">
+                        <p class="page-footer__copyright">
+                            2018, <a class="page-footer__logo-link" href="#">
+                                ©
+                                <svg class="page-footer__logo-svg">
+                                    <use xlink:href="~/Content/images/icon_sprite.svg#icon_logo"></use>
+                                </svg>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <ul class="index-footer__menu">
+                        <li class="index-footer__item">
+                            <a class="index-footer__link" href="#">Help</a>
+                        </li>
+                        <li class="index-footer__item">
+                            <a class="index-footer__link" href="#">Help</a>
+                        </li>
+                        <li class="index-footer__item">
+                            <a class="index-footer__link" href="#">Rules</a>
+                        </li>
+                        <li class="index-footer__item">
+                            <a class="index-footer__link" href="#">Blog</a>
+                        </li>
+                        <li class="index-footer__item index-footer__item--dropdown">
+                            <!-- <button class="index-footer__link index-footer__link--lang" type="button" id="index-page__language-button">Язык</button>-->
+                            <form action="/Home/SetLocale" method="post">
+                                <!--<ul class="index-footer__language-list language-list" id="index-page__language-list" tabindex="-1">
+                    <li class="language-list__item">
+                        <a name="locale" value="en-us" class="language-list__link" href="#">En&nbsp;—&nbsp;Английский</a>
+                    </li>
+                    <li class="language-list__item">
+                        <a class="language-list__link">Ru&nbsp;—&nbsp;Русский</a>
+                    </li>
+                </ul>-->
+                                <select name="locale" onchange="submit();" class="index-footer__link index-footer__link--lang">
+                                    <option value="" class="language-list__link">Language</option>
+                                    <option value="ru-ru" class="language-list__link">RU - Русский</option>
+                                    <option value="en-us" class="language-list__link">EN - English</option>
+                                    <option value="de-de" class="language-list__link">DE - Deutsch</option>
+                                    <option value="es-es" class="language-list__link">ES - Spanish</option>
+                                </select>
+                            </form>
+                        </li>
+                    </ul>
+                    </div>
+                <div class="col-md-3"></div>    
+            </div>
+        </div>
+    </div>
+</footer>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/mansory")
+@Scripts.Render("~/bundles/main")
+<script src="https://yastatic.net/share2/share.js" async="async"></script>
+<script src="https://yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>

@@ -1,0 +1,185 @@
+﻿@using PandaWiki.Views.Home;
+
+@model DAL.RequestModel.QuerySearchModel
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+@Html.Partial("_Head")
+@Html.Partial("_Header", Model)
+<main class="page">
+    <div class="container">
+        <div class="search">
+            <p class="search__text">Sample results for <span class="search__search-phrase">#casual</span> from</p>
+
+            <ul class="search__type type-list type-list--main-page">
+                <li class="type-list__item">
+                    <input class="visually-hidden type-list__filter" type="radio" name="index-page__type-filter" id="type-list__filter-text" value="type-list__filter-text" form="page-header__search-form" checked>
+                    <label class="type-list__filter-label type-list__filter-label--text" for="type-list__filter-text" title="@Lang.LookForPosts">
+                        <span class="visually-hidden">@Lang.LookForPosts</span>
+                        <svg class="type-list__filter-label-svg">
+                            <use xlink:href="~/Content/images/icon_sprite.svg#icon_type-post"></use>
+                        </svg>
+                    </label>
+                </li>
+                <li class="type-list__item">
+                    <input class="visually-hidden type-list__filter" type="radio" name="index-page__type-filter" id="type-list__filter-image" value="type-list__filter-image" form="page-header__search-form">
+                    <label class="type-list__filter-label type-list__filter-label--image" for="type-list__filter-image" title="@Lang.LookForImages">
+                        <span class="visually-hidden">@Lang.LookForImages</span>
+                        <svg class="type-list__filter-label-svg">
+                            <use xlink:href="~/Content/images/icon_sprite.svg#icon_type-image"></use>
+                        </svg>
+                    </label>
+                </li>
+                <li class="type-list__item">
+                    <input class="visually-hidden type-list__filter" type="radio" name="index-page__type-filter" id="type-list__filter-video" value="type-list__filter-video" form="page-header__search-form">
+                    <label class="type-list__filter-label type-list__filter-label--video" for="type-list__filter-video" title="@Lang.LookForVideos">
+                        <span class="visually-hidden">@Lang.LookForVideos</span>
+                        <svg class="type-list__filter-label-svg">
+                            <use xlink:href="~/Content/images/icon_sprite.svg#icon_post-yt"></use>
+                        </svg>
+                    </label>
+                </li>
+                <li class="type-list__item">
+                    <input class="visually-hidden type-list__filter" type="radio" name="index-page__type-filter" id="type-list__filter-profile" value="type-list__filter-profile" form="page-header__search-form">
+                    <label class="type-list__filter-label type-list__filter-label--profile" for="type-list__filter-profile" title="@Lang.LookForUsersAndChannels">
+                        <span class="visually-hidden">@Lang.LookForUsersAndChannels</span>
+                        <svg class="type-list__filter-label-svg">
+                            <use xlink:href="~/Content/images/icon_sprite.svg#icon_type-user"></use>
+                        </svg>
+                    </label>
+                </li>
+                <li class="type-list__item">
+                    <input class="visually-hidden type-list__filter" type="radio" name="index-page__type-filter" id="type-list__filter-attached" value="type-list__filter-attached" form="page-header__search-form">
+                    <label class="type-list__filter-label type-list__filter-label--attached" for="type-list__filter-attached" title="@Lang.LookForMusic">
+                        <span class="visually-hidden">@Lang.LookForMusic</span>
+                        <svg class="type-list__filter-label-svg">
+                            <use xlink:href="~/Content/images/icon_sprite.svg#icon_type-attachment"></use>
+                        </svg>
+                    </label>
+                </li>
+            </ul>
+
+            <ul class="search__social-list social-list social-list--main-page">
+                <li class="social-list__item">
+                    <input class="visually-hidden social-list__input" type="checkbox" name="index-page__social-vk" id="index-page__social-vk" form="page-header__search-form" value="1" formtarget="#SearchForm">
+                    <label class="social-list__link social-list__link--vk social-list__link--input" for="index-page__social-vk" title="@Lang.LookIn @Lang.Vkontakte">
+                        <span class="visually-hidden">@Lang.Vkontakte</span>
+                        <svg class="social-list__svg">
+                            <use xlink:href="~/Content/images/icon_sprite.svg#icon_post-vk"></use>
+                        </svg>
+                    </label>
+                </li>
+                <li class="social-list__item">
+                    <input class="visually-hidden social-list__input" type="checkbox" name="index-page__social-youtube" id="index-page__social-youtube" form="page-header__search-form" value="0" formtarget="#SearchForm">
+                    <label class="social-list__link social-list__link--youtube social-list__link--input" for="index-page__social-youtube" title="@Lang.LookIn @Lang.YouTube">
+                        <span class="visually-hidden">@Lang.YouTube</span>
+                        <svg class="social-list__svg">
+                            <use xlink:href="~/Content/images/icon_sprite.svg#icon_post-yt"></use>
+                        </svg>
+                    </label>
+                </li>
+                <li class="social-list__item">
+                    <input class="visually-hidden social-list__input" type="checkbox" name="index-page__social-fb" id="index-page__social-fb" form="page-header__search-form" value="Facebook" formtarget="#SearchForm">
+                    <label class="social-list__link social-list__link--fb social-list__link--input" for="index-page__social-fb" title="@Lang.LookIn @Lang.Facebook">
+                        <span class="visually-hidden">@Lang.Facebook</span>
+                        <svg class="social-list__svg">
+                            <use xlink:href="~/Content/images/icon_sprite.svg#icon_post-fb"></use>
+                        </svg>
+                    </label>
+                </li>
+                <li class="social-list__item">
+                    <input class="visually-hidden social-list__input" type="checkbox" name="index-page__social-wiki" id="index-page__social-wiki" form="page-header__search-form" value="Vikipedia" formtarget="#SearchForm">
+                    <label class="social-list__link social-list__link--wiki social-list__link--input" for="index-page__social-wiki" title="@Lang.LookIn @Lang.Wikipedia">
+                        <span class="visually-hidden">@Lang.Wikipedia</span>
+                        <svg class="social-list__svg">
+                            <use xlink:href="~/Content/images/icon_sprite.svg#icon_post-wiki"></use>
+                        </svg>
+                    </label>
+                </li>
+                <li class="social-list__item">
+                    <input class="visually-hidden social-list__input" type="checkbox" name="index-page__social-tw" id="index-page__social-tw" form="page-header__search-form" value="Twitter" formtarget="#SearchForm">
+                    <label class="social-list__link social-list__link--tw social-list__link--input" for="index-page__social-tw" title="@Lang.LookIn @Lang.Twitter">
+                        <span class="visually-hidden">@Lang.Twitter</span>
+                        <svg class="social-list__svg">
+                            <use xlink:href="~/Content/images/icon_sprite.svg#icon_post-tw"></use>
+                        </svg>
+                    </label>
+                </li>
+                <li class="social-list__item">
+                    <input class="visually-hidden social-list__input" type="checkbox" name="index-page__social-instagram" id="index-page__social-instagram" form="page-header__search-form" value="Instagram" formtarget="#SearchForm">
+                    <label class="social-list__link social-list__link--instagram social-list__link--input" for="index-page__social-instagram" title="@Lang.LookIn @Lang.Instagram">
+                        <span class="visually-hidden">@Lang.Instagram</span>
+                        <svg class="social-list__svg">
+                            <radialGradient id="rg" r="150%" cx="-10%" cy="100%">
+                                <stop stop-color="#fdf497" offset="0" />
+                                <stop stop-color="#fdf497" offset="0.05" />
+                                <stop stop-color="#fd5949" offset="0.45" />
+                                <stop stop-color="#d6249f" offset="0.6" />
+                            </radialGradient>
+                            <use xlink:href="~/Content/images/icon_sprite.svg#icon_post-ig"></use>
+                        </svg>
+                    </label>
+                </li>
+                <li class="social-list__item">
+                    <input class="visually-hidden social-list__input" type="checkbox" name="index-page__social-pinterest" id="index-page__social-pinterest" form="page-header__search-form" value="Pinterest" formtarget="#SearchForm">
+                    <label class="social-list__link social-list__link--pinterest social-list__link--input" for="index-page__social-pinterest" title="@Lang.LookIn @Lang.Pinterest">
+                        <span class="visually-hidden">@Lang.Pinterest</span>
+                        <svg class="social-list__svg">
+                            <use xlink:href="~/Content/images/icon_sprite.svg#icon_post-pinterest"></use>
+                        </svg>
+                    </label>
+                </li>
+            </ul>
+        </div>
+        <div id="posts-containers" class="posts">
+            @if (!string.IsNullOrEmpty(Model.Q))
+            {
+                <div id="loader" class="loader"></div>
+            }
+        </div>
+    </div>
+</main>
+@Html.Partial("_Footer")
+@Html.Partial("_Share")
+@Html.Partial("_YoutubeModal")
+@Html.Partial("_VkModal")
+@Html.Partial("_TelegramModal")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/search")
+@Scripts.Render("~/bundles/main")
+
+<script>
+    function shareClick(title, postNum) {
+        debugger;
+        var share = Ya.share2('share', {
+            content: {
+                url: '@Url.Action("Index", "Search", new { q = Model.Q }, Request.Url.Scheme)' + '&postNum=' + postNum,
+                title: title
+            }
+        });
+    }
+
+    // Send selected post types for search (filters)
+    $('#SubmitButton').click(function () {
+        debugger;
+        var checkboxes = document.getElementsByClassName('visually-hidden social-list__input');
+        var result = []; // можно в массиве их хранить, если нужно использовать
+        for (var index = 0; index < checkboxes.length; index++) {
+            if (checkboxes[index].checked) {
+                result.push(checkboxes[index].value);
+            }
+        }
+        var search = $('#searchString').val();
+        $(".result-data").val(result);
+    });
+
+    $('.modal').on('hidden.bs.modal', function () {
+        $(".modal iframe").attr("src", "");
+        $('video').trigger('pause');
+        postOpened = false;
+        abortAjaxQueryes();
+    });
+</script>

@@ -1,0 +1,90 @@
+﻿@{
+    var authorised = Request.Cookies["access_token"] != null
+     && !string.IsNullOrEmpty(Request.Cookies["access_token"].Value);
+}
+
+<div class="modal fade modal--youtube" id="modal-yt">
+    <input type="hidden" name="videoId" id="postId" />
+    <input type="hidden" name="type" id="type" />
+    <div class="modal-dialog modal--custom">
+        <article class="modal-content modal-youtube">
+            <header class="modal__header modal-header">
+                <a class="modal-header__title-link modal-header__title-link--checked" href="#" title="Перейти на&nbsp;канала на&nbsp;YouTube" target="_blank">
+                    <b class="modal-header__title"></b>
+                    <img class="modal-header__channel-logo" src="" alt="">
+                </a>
+                <span class="modal-header__title-checked" title="Подтверждено">
+                    <svg class="modal-header__title-checked-svg">
+                        <use xlink:href="~/Content/images/icon_sprite.svg#icon_checked-yt"></use>
+                    </svg>
+                </span>
+                <p class="modal-header__published">2 июл. 2014 г.</p>
+            </header>
+
+            <div class="modal__body modal-youtube__body">
+                <h2 class="modal-youtube__title"></h2>
+
+                <p class="modal-youtube__media">
+                    <iframe width="640" height="360" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </p>
+
+                <div class="modal-youtube__user-menu-wrapper">
+                    <ul class="modal-youtube__user-menu modal-user-menu">
+                        <li class="modal-user-menu__item">
+                            <a class="modal-user-menu__link modal-user-menu__link--share" href="#" title="Поделиться">
+                                <svg class="modal-user-menu__link-svg">
+                                    <use xlink:href="~/Content/images/icon_sprite.svg#icon_share"></use>
+                                </svg>
+                                <span class="visually-hidden">Поделиться</span>
+                            </a>
+                        </li>
+                        @if (authorised)
+                        {
+                            <li class="post__actions-item no-margin">
+                                <span class="post__link-save save" onclick="modalSavePostClick('@User.Identity.Name');"
+                                      title="Сохранить в&nbsp;своём аккаунте">
+                                    <span class="visually-hidden">Сохранить в&nbsp;своём аккаунте</span>
+                                    <svg class="post__link-save-svg">
+                                        <use xlink:href="~/Content/images/icon_sprite.svg#icon_plus"></use>
+                                    </svg>
+                                </span>
+                            </li>
+                            <li class="post__actions-item hidden">
+                                <span class="post__link-save remove rotate45" onclick="modalRemovePostClick('@User.Identity.Name');"
+                                      title="Сохранить в&nbsp;своём аккаунте">
+                                    <span class="visually-hidden">Сохранить в&nbsp;своём аккаунте</span>
+                                    <svg class="post__link-save-svg">
+                                        <use xlink:href="~/Content/images/icon_sprite.svg#icon_plus"></use>
+                                    </svg>
+                                </span>
+                            </li>
+                        }
+                    </ul>
+                </div>
+
+                <div class="modal-youtube__description-wrapper">
+                    <div class="modal-youtube__description">
+                        <div class="modal-youtube__description-text"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body__comments">
+                <div class="modal-body__comments-header comments-header">
+                    <p class="comments-header__text"><span></span> комментариев</p>
+                </div>
+            </div>
+        </article>
+
+        <a class="modal-body__flag" href="#" title="Посмотреть в&nbsp;соц. сети в&nbsp;отдельной кладке" target="_blank">
+            <svg class="modal-body__flag-svg">
+                <use xlink:href="~/Content/images/icon_sprite.svg#icon_post-yt"></use>
+            </svg>
+            <span class="visually-hidden">Посмотреть в&nbsp;соц. сети в&nbsp;отдельной кладке</span>
+        </a>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+        <button class="btn-arrow btn-arrow--prev" type="button"><span class="visually-hidden">Предыдущий пост</span></button>
+        <button class="btn-arrow btn-arrow--next" type="button"><span class="visually-hidden">Следующий пост</span></button>
+    </div>
+</div>

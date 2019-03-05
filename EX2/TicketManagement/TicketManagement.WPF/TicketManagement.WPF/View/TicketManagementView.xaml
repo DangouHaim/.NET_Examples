@@ -1,0 +1,161 @@
+﻿<Window x:Class="TicketManagement.WPF.View.TicketManagementView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:local="clr-namespace:TicketManagement.WPF.View"
+        xmlns:dd="urn:gong-wpf-dragdrop"
+        xmlns:u="clr-namespace:TicketManagement.WPF.Util"
+        mc:Ignorable="d"
+        Title="TicketManagementView" 
+        Height="650"
+        MinHeight="650"
+        Width="800"
+        MinWidth="800"
+        >
+    <Grid>
+        <TabControl>
+            <TabItem  Header="{DynamicResource UserManagement}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <ListBox
+                        Name="UserList" 
+                        Grid.RowSpan="2" 
+                        ItemsSource="{Binding Users}" 
+                        SelectedItem="{Binding Path=CurrentUser, Mode=TwoWay}" 
+                        DisplayMemberPath="Login" 
+                        IsEnabled="{Binding EnabledUserList, Mode=TwoWay}"
+                        Style="{StaticResource UserListBox}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction 
+                                    Command="{Binding SelectionCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ListBox>
+                    <StackPanel Style="{StaticResource StackPanelDefault}" Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="1">
+                        <Label Content="{DynamicResource LoginAsNickName}"></Label>
+                        <TextBox Text="{Binding CurrentUser.Login, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="LostFocus">
+                                    <i:InvokeCommandAction 
+                                        Command="{Binding ChangeNameCommand}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+                        <Label>EMail</Label>
+                        <TextBox Text="{Binding CurrentUser.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="LostFocus">
+                                    <i:InvokeCommandAction 
+                                        Command="{Binding ChangeEmailCommand}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+                        <Label Content="{DynamicResource Password}"></Label>
+                        <PasswordBox IsEnabled="{Binding AddUser, Mode=TwoWay}" Name="Password"></PasswordBox>
+                        <Label Content="{DynamicResource Roles}"></Label>
+                        <ComboBox IsEnabled="{Binding EnabledUserList, Mode=TwoWay}" Margin="0 0 0 5" Name="RolesCombo">
+                            <ComboBoxItem>admin</ComboBoxItem>
+                            <ComboBoxItem>manager</ComboBoxItem>
+                            <ComboBoxItem>user</ComboBoxItem>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction 
+                                        Command="{Binding AddRoleCommand}"
+                                        CommandParameter="{Binding ElementName=RolesCombo, Path=SelectedItem}"
+                                    />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </ComboBox>
+                        <ListBox Name="RolesList" ItemsSource="{Binding CurrentUser.Roles}" Style="{StaticResource RolesListBox}"></ListBox>
+                        <Button Command="{Binding DropRoleCommand}" CommandParameter="{Binding ElementName=RolesList, Path=SelectedItem}" Content="{DynamicResource DropRole}"></Button>
+                        <Button Command="{Binding DropUserCommand}" Content="{DynamicResource DropUser}"></Button>
+                        <Button Command="{Binding AddUserCommand}" Content="{DynamicResource AddUser}"></Button>
+                        <TextBlock Text="{Binding CurrentError, Mode=TwoWay}" Style="{StaticResource ErrorLabel}"></TextBlock>
+                    </StackPanel>
+                    <Button Margin="5" Grid.Column="2" Grid.Row="1" Command="{Binding CommitUserCommand}" CommandParameter="{Binding ElementName=Password}" IsDefault="True" Content="{DynamicResource Commit}"></Button>
+                    <Button Margin="5" Grid.Column="1" Grid.Row="1" Command="{Binding CancelCommitUserCommand}" IsCancel="True" Content="{DynamicResource Cancel}"></Button>
+                </Grid>
+            </TabItem>
+            <TabItem  Header="{DynamicResource VenueManagement}">
+                <Grid Name="VenueGrid">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="0.25*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition Height="0.25*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.RowSpan="{Binding ElementName=VenueGrid, Path=RowDefinitions.Count}" Style="{StaticResource DragableButtonStack}" Margin="5">
+                        <Button Name="Venue" Content="{DynamicResource Venue}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="PreviewQueryContinueDrag">
+                                    <i:InvokeCommandAction Command="{Binding SetDragableCommand}" CommandParameter="{Binding ElementName=Venue}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                        <Button Name="Layout" Content="{DynamicResource Layout}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="PreviewQueryContinueDrag">
+                                    <i:InvokeCommandAction Command="{Binding SetDragableCommand}" CommandParameter="{Binding ElementName=Layout}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                        <Button Name="Area" Content="{DynamicResource Area}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="PreviewQueryContinueDrag">
+                                    <i:InvokeCommandAction Command="{Binding SetDragableCommand}" CommandParameter="{Binding ElementName=Area}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                        <Button Name="Seat" Content="{DynamicResource Seat}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="PreviewQueryContinueDrag">
+                                    <i:InvokeCommandAction Command="{Binding SetDragableCommand}" CommandParameter="{Binding ElementName=Seat}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </StackPanel>
+                    <TreeView Grid.Column="1" ItemsSource="{Binding VenueLayoutTreeSource, Mode=TwoWay}"
+                              DisplayMemberPath="Name" dd:DragDrop.IsDropTarget="True" 
+                              dd:DragDrop.DropHandler="{Binding}">
+                        <i:Interaction.Behaviors>
+                            <u:BindableSelectedItemBehaviour SelectedItem="{Binding CurrentTreeViewItem, Mode=TwoWay}" />
+                        </i:Interaction.Behaviors>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDoubleClick">
+                                <i:InvokeCommandAction Command="{Binding TreeViewEditCommand}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TreeView>
+                    <Button Grid.Row="1" Grid.Column="1" Style="{StaticResource DialogButton}" 
+                            Command="{Binding TreeViewRemoveCommand}" Content="{DynamicResource Remove}"></Button>
+                    <ListBox dd:DragDrop.IsDropTarget="True" dd:DragDrop.DropHandler="{Binding}" 
+                             Grid.Column="1" Grid.Row="2" ItemsSource="{Binding Areas, Mode=TwoWay}"
+                             Style="{StaticResource AreaList}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDoubleClick">
+                                <i:InvokeCommandAction Command="{Binding EditAreaCommand}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ListBox>
+                    <Button Grid.Row="3" Grid.Column="1" Style="{StaticResource DialogButton}" 
+                            Command="{Binding AreasRemoveCommand}" Content="{DynamicResource Remove}"></Button>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

@@ -1,0 +1,111 @@
+﻿@model DAL.ResponseModel.SearchModelResponse
+
+@{ 
+    var authorised = Request.Cookies["access_token"] != null
+     && !string.IsNullOrEmpty(Request.Cookies["access_token"].Value);
+}
+
+<article class="thumbnail posts__item post post--yt" tabindex="0">
+    <div data-toggle="modal" data-target="#modal-yt" onclick="postClick(@Json.Encode(Model));">
+
+        <header class="post__header">
+            <div class="post__title-wrapper">
+                <h2 class="post__title">@Model.YoutubeModel.ChannelTitle</h2>
+                <span class="post__sub-title">579 тыс. подписчиков</span>
+            </div>
+            <div class="post__title-logo">
+                <img src="@Model.UrlThumbnail" alt="@Model.YoutubeModel.ChannelTitle">
+            </div>
+        </header>
+
+        <p class="post__media">
+            <iframe src="@($"https://www.youtube.com/embed/{Model.YoutubeModel.VideoId}")" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </p>
+
+        <p class="post__text">@Model.Title</p>
+    </div>
+
+    <div class="post__actions">
+        <ul class="post__social-list">
+            <li class="post__social-item">
+                <span class="post__link-views post__link-views--yt post__link-view-social">@Model.Views</span>
+            </li>
+            <li class="post__social-item">
+                <a class="post__link-like post__link-like--yt" href="#">@Model.Likes</a>
+            </li>
+            <li>
+                <a class="post__link-dislike post__link-dislike--yt" href="#">@Model.Dislikes</a>
+            </li>
+        </ul>
+
+        <ul class="post__actions-list">
+            <li class="post__actions-item">
+                <a class="post__link-share" href="#" title="Поделиться" data-toggle="modal" data-target="#modal-share">
+                    <span class="visually-hidden">Поделиться</span>
+                    <svg class="post__link-share-svg">
+                        <use xlink:href="~/Content/images/icon_sprite.svg#icon_share"></use>
+                    </svg>
+                </a>
+            </li>
+            @if (authorised && !Model.IsAdded)
+            {
+                <li class="post__actions-item no-margin">
+                    <span class="post__link-save save" data-await="@Model.YoutubeModel.VideoId" onclick="savePostClick('@User.Identity.Name', '@Model.YoutubeModel.VideoId', '@Model.Type');"
+                          title="Сохранить в&nbsp;своём аккаунте">
+                        <span class="visually-hidden">Сохранить в&nbsp;своём аккаунте</span>
+                        <svg class="post__link-save-svg">
+                            <use xlink:href="~/Content/images/icon_sprite.svg#icon_plus"></use>
+                        </svg>
+                    </span>
+                </li>
+                <li class="post__actions-item hidden">
+                    <span class="post__link-save remove rotate45" data-await="@Model.YoutubeModel.VideoId" onclick="removePostClick('@User.Identity.Name', '@Model.YoutubeModel.VideoId', '@Model.Type');"
+                          title="Сохранить в&nbsp;своём аккаунте">
+                        <span class="visually-hidden">Удалить</span>
+                        <svg class="post__link-save-svg">
+                            <use xlink:href="~/Content/images/icon_sprite.svg#icon_plus"></use>
+                        </svg>
+                    </span>
+                </li>
+            }
+            else
+            {
+                if (authorised && Model.IsAdded)
+                {
+                    <li class="post__actions-item no-margin hidden">
+                        <span class="post__link-save save" data-await="@Model.YoutubeModel.VideoId" onclick="savePostClick('@User.Identity.Name', '@Model.YoutubeModel.VideoId', '@Model.Type');"
+                              title="Сохранить в&nbsp;своём аккаунте">
+                            <span class="visually-hidden">Сохранить в&nbsp;своём аккаунте</span>
+                            <svg class="post__link-save-svg">
+                                <use xlink:href="~/Content/images/icon_sprite.svg#icon_plus"></use>
+                            </svg>
+                        </span>
+                    </li>
+                    <li class="post__actions-item">
+                        <span class="post__link-save remove rotate45" data-await="@Model.YoutubeModel.VideoId" onclick="removePostClick('@User.Identity.Name', '@Model.YoutubeModel.VideoId', '@Model.Type');"
+                              title="Сохранить в&nbsp;своём аккаунте">
+                            <span class="visually-hidden">Удалить</span>
+                            <svg class="post__link-save-svg">
+                                <use xlink:href="~/Content/images/icon_sprite.svg#icon_plus"></use>
+                            </svg>
+                        </span>
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+
+    <a class="post__flag" href="https://www.youtube.com/watch?v=@Model.YoutubeModel.VideoId" title="Посмотреть в&nbsp;соц. сети в&nbsp;отдельной кладке" target="_blank">
+        <svg class="post__flag-svg">
+            <use xlink:href="~/Content/images/icon_sprite.svg#icon_post-yt"></use>
+        </svg>
+        <span class="visually-hidden">Посмотреть в&nbsp;соц. сети в&nbsp;отдельной вкладке</span>
+    </a>
+</article>
+
+<script>
+    if(postLoad()) {
+        postClick(@Html.Raw(Json.Encode(Model)));
+        $('#modal-yt').modal('toggle');
+    }
+</script>

@@ -1,0 +1,84 @@
+﻿@using DataPresenter.Entity;
+@using TicketManagement.ASP.Views.Event;
+
+@model Event
+
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<h2>@Lang.ManageEvents</h2>
+
+<section>
+    @using (Html.BeginForm("ManageEvents", "Event"))
+    {
+        <label>@Lang.SelectLayout</label>
+        @Html.DropDownList("LayoutId", new SelectList(ViewBag.Layouts, "Id", "Description"));
+        <input id="SelectLayout" type="submit" value=@Lang.Select formaction="ManageEvents" />
+    }
+
+    @using (Html.BeginForm("AddEvent", "Event", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(m => m.LayoutId)
+
+        <label>@Lang.Name</label>
+        <br>
+        @Html.EditorFor(m => m.Name)
+        <br>
+        <label>@Lang.Description</label>
+        <br>
+        @Html.EditorFor(m => m.Description)
+        <br>
+        <label>@Lang.EventDate</label>
+        <br>
+        @Html.TextBoxFor(m => m.EventDate, new { type = "datetime-local"})
+        <br>
+        <label for="file">@Lang.UploadImage:</label>
+        <input type="file" name="file" id="file" /><br><br>
+        <br>
+        <input type="submit" value=@Lang.Add />
+    }
+</section>
+
+<section>
+    <h2>@Lang.Events</h2>
+
+    @using (Html.BeginForm("RemoveEvent", "Event"))//need total tickets
+    {
+        foreach (var v in ViewBag.Events as List<Tuple<Event, Tuple<int, int>>>)
+        {
+            <div>
+                @if (v.Item2.Item1 != v.Item2.Item2)
+                {
+                    <input type="checkbox" disabled>
+                }
+                else
+                {
+                    //tickets count are equal avalable tickets count
+                    <input type="checkbox" name="Ids" value=@v.Item1.Id>
+                }
+                <span>@Html.ActionLink(v.Item1.Name, "ToEvent", "Event", new { Id = v.Item1.Id }, null)</span> <span>@Lang.Tickets: @v.Item2.Item1 @Lang.Of @v.Item2.Item2 </span>
+                @if (v.Item2.Item1 == v.Item2.Item2)
+                {
+                    //tickets count are equal avalable tickets count
+                    <span class="EditEvent" >@Html.ActionLink(Lang.Edit, "EditEvent", "Event", new { Id = v.Item1.Id }, null)</span>
+                }
+            </div> 
+        }
+        <input type="submit" value=@Lang.Delete />
+    }
+
+</section>
+
+<section>
+    <h2>@Lang.EventAreas</h2>
+
+    @foreach (var v in ViewBag.EventAreas as List<EventArea>)
+    {
+        <div>
+            <span>@Lang.Name: @v.Description </span>
+            <span>@Lang.Price: @v.Price </span>
+            <span>@Html.ActionLink(Lang.Edit, "EditEventArea", "Event", new { Id = v.Id }, null)</span>
+        </div>
+    }
+
+</section>

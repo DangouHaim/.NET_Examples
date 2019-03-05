@@ -1,0 +1,13 @@
+﻿@using TicketManagement.ASP.Views.Event;
+@using System.Resources;
+
+<h1>@Lang.Events</h1>
+
+@foreach (var v in ViewBag.data as List<string>)
+{
+    @v.ToString();
+}
+
+<section>
+    @Html.ActionLink(Lang.Events, "Index", "Event")
+</section>

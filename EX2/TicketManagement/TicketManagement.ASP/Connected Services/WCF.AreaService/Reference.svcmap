@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="bae33d25-cf68-4666-b451-eaf06134f808" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:4473/AreaService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="AreaService.disco" MetadataType="Disco" ID="cabbe1dc-d74e-4a32-8ec8-630bd2a75e6f" SourceId="1" SourceUrl="http://localhost:4473/AreaService.svc?disco" />
+    <MetadataFile FileName="AreaService.xsd" MetadataType="Schema" ID="38181ace-5645-4f0f-8230-ecc2358daa63" SourceId="1" SourceUrl="http://localhost:4473/AreaService.svc?xsd=xsd0" />
+    <MetadataFile FileName="AreaService.wsdl" MetadataType="Wsdl" ID="74730b7f-a40c-48d6-ac2a-23f30013b1a8" SourceId="1" SourceUrl="http://localhost:4473/AreaService.svc?wsdl" />
+    <MetadataFile FileName="AreaService1.xsd" MetadataType="Schema" ID="d02e6901-1256-4876-b91b-241842e90bd0" SourceId="1" SourceUrl="http://localhost:4473/AreaService.svc?xsd=xsd1" />
+    <MetadataFile FileName="AreaService2.xsd" MetadataType="Schema" ID="eb310e6c-1dcc-48d0-a940-e280f057157b" SourceId="1" SourceUrl="http://localhost:4473/AreaService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

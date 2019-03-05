@@ -1,0 +1,13 @@
+﻿@using TicketManagement.ASP.Views.UserPage;
+
+<h2>@Lang.ChanheLanguage</h2>
+
+@using (Html.BeginForm("SetLocale", "UserPage", FormMethod.Post))
+{
+    <select name="locale">
+        <option value="en-us">English</option>
+        <option value="ru-ru">Русский</option>
+        <option value="be-by">Беларускі</option>
+    </select>
+    <input type="submit" value=@Lang.Save />
+}

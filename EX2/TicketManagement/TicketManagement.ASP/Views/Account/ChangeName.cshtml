@@ -1,0 +1,12 @@
+﻿@using TicketManagement.ASP.Views.Account;
+@using LangUs = TicketManagement.ASP.Views.UserPage.Lang;
+
+<h2>@Lang.ChangeName</h2>
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+@using (Html.BeginForm("ChangeName", "Account", FormMethod.Post))
+{
+    <input type="text" name="name" />
+    <input type="submit" value=@LangUs.Submit />
+}
